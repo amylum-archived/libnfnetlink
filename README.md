@@ -11,7 +11,7 @@ Package repo for [libnfnetlink](https://www.netfilter.org/projects/libnfnetlink/
 
 To build a new package, update the submodule and run `make`. This launches the docker build container and builds the package.
 
-To slibnfnetlinkt a shell in the build environment for manual actions, run `make manual`.
+To start a shell in the build environment for manual actions, run `make manual`.
 
 ## License
 
