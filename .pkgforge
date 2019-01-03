@@ -3,11 +3,21 @@ org 'amylum'
 
 licenses 'COPYING'
 
+deps(
+  'linux-api-headers': {
+    version: '4.20-1',
+    checksum: 'aed037b2b3fb2df77ca19359a20188d39c25d011febf4d3733d251fa87ca9636'
+  }
+)
+
 configure_flags(
   prefix: '/usr',
 )
 
+cflags
 harden
+
+patch 'types.patch'
 
 build do
   run './autogen.sh'
