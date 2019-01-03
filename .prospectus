@@ -1,0 +1,22 @@
+Prospectus.extra_dep('file', 'prospectus_pkgforge')
+Prospectus.extra_dep('file', 'prospectus_travis')
+
+pkgforge = PkgForge.load_from_file
+my_slug = pkgforge.org + '/' + pkgforge.name
+
+item do
+  expected do
+    url_xpath
+    url 'http://git.netfilter.org/libnfnetlink/refs/tags'
+    xpath '//*[@id="cgit"]/div/table/tr[2]/td[1]/a'
+    regex /^libnfnetlink-([\d.]+)$/
+  end
+
+  actual do
+    git_tag
+    regex /^(.*)-\d+$/
+  end
+
+  extend ProspectusPkgforge::DepItems
+  extend ProspectusTravis::Build.new(my_slug)
+end
